@@ -1,0 +1,37 @@
+From fb4ef420655765686ce99f85d8d6aca2bdc7b1ae Mon Sep 17 00:00:00 2001
+From: James <james@innovum.com.au>
+Date: Tue, 2 May 2017 01:28:57 +1000
+Subject: [PATCH] NanoPi NEO: Enable Mender requirements
+
+Add CONFIG_BOOTCOUNT_ENV, CONFIG_BOOTCOUNT_LIMIT, and remove CONFIG_ENV_OFFSET
+
+Signed-off-by: James Pettigrew <james@innovum.com.au>
+---
+ include/configs/sunxi-common.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/sunxi-common.h b/include/configs/sunxi-common.h
+index 8363414..dc6a457 100644
+--- a/include/configs/sunxi-common.h
++++ b/include/configs/sunxi-common.h
+@@ -144,7 +144,8 @@
+ #define CONFIG_MMC_SUNXI
+ #define CONFIG_MMC_SUNXI_SLOT		0
+ #define CONFIG_ENV_IS_IN_MMC
+-#define CONFIG_SYS_MMC_ENV_DEV		0	/* first detected MMC controller */
++#define CONFIG_BOOTCOUNT_LIMIT
++#define CONFIG_BOOTCOUNT_ENV
+ #endif
+ 
+ /* 64MB of malloc() pool */
+@@ -175,7 +176,6 @@
+ 
+ #define CONFIG_SYS_MONITOR_LEN		(768 << 10)	/* 768 KiB */
+ 
+-#define CONFIG_ENV_OFFSET		(544 << 10) /* (8 + 24 + 512) KiB */
+ #define CONFIG_ENV_SIZE			(128 << 10)	/* 128 KiB */
+ 
+ #define CONFIG_FAT_WRITE	/* enable write access */
+-- 
+2.7.4
+
